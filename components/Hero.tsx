@@ -79,13 +79,13 @@ export default function Hero() {
       </div>
 
       {/* Left Side Typography - Luxury Design */}
-      <div className="absolute left-8 sm:left-12 lg:left-16 top-1/3 z-30 flex flex-col items-start gap-2 max-w-xl pointer-events-none">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-wider uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+      <div className="absolute left-4 sm:left-8 md:left-12 lg:left-16 top-1/3 z-30 flex flex-col items-start gap-2 max-w-xl pointer-events-none">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-wider uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
           WAQAR HAIDER
         </h1>
         <div className="flex items-center gap-2">
-          <div className="h-px w-8 bg-gradient-to-r from-white/60 to-transparent" />
-          <div className="text-sm sm:text-base md:text-lg font-medium text-zinc-300 tracking-[0.2em] uppercase">
+          <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-white/60 to-transparent" />
+          <div className="text-xs sm:text-sm md:text-lg font-medium text-zinc-300 tracking-[0.15em] sm:tracking-[0.2em] uppercase">
             <TextEffect 
               per="char" 
               delay={0.6}
