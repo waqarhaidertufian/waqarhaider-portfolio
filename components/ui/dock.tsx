@@ -25,6 +25,8 @@ const DOCK_HEIGHT = 128;
 const DEFAULT_MAGNIFICATION = 64;
 const DEFAULT_DISTANCE = 150;
 const DEFAULT_PANEL_HEIGHT = 48;
+const MOBILE_PANEL_HEIGHT = 40;
+const MOBILE_MAGNIFICATION = 48;
 
 type DockProps = {
   children: React.ReactNode;
@@ -82,12 +84,23 @@ function Dock({
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const effectivePanelHeight = isMobile ? MOBILE_PANEL_HEIGHT : panelHeight;
+  const effectiveMagnification = isMobile ? MOBILE_MAGNIFICATION : magnification;
 
   const maxHeight = useMemo(() => {
-    return Math.max(DOCK_HEIGHT, magnification + magnification / 2 + 4);
-  }, [magnification]);
+    return Math.max(DOCK_HEIGHT, effectiveMagnification + effectiveMagnification / 2 + 4);
+  }, [effectiveMagnification]);
 
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
+  const heightRow = useTransform(isHovered, [0, 1], [effectivePanelHeight, maxHeight]);
   const height = useSpring(heightRow, spring);
 
   return (
@@ -96,7 +109,7 @@ function Dock({
         height: height,
         scrollbarWidth: 'none',
       }}
-      className='mx-2 flex max-w-full items-center overflow-x-auto'
+      className='mx-2 flex max-w-full items-center overflow-x-auto w-11/12 sm:w-full'
     >
       <motion.div
         onMouseMove={({ pageX }) => {
@@ -108,14 +121,14 @@ function Dock({
           mouseX.set(Infinity);
         }}
         className={cn(
-          'mx-auto flex w-fit gap-4 rounded-2xl bg-gray-50 px-4 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800',
+          'mx-auto flex w-fit gap-2 sm:gap-4 rounded-2xl bg-gray-50 px-3 sm:px-4 dark:bg-neutral-900/80 backdrop-blur-md border border-neutral-200 dark:border-neutral-800',
           className
         )}
-        style={{ height: panelHeight }}
+        style={{ height: effectivePanelHeight }}
         role='toolbar'
         aria-label='Application dock'
       >
-        <DockProvider value={{ mouseX, spring, distance, magnification }}>
+        <DockProvider value={{ mouseX, spring, distance, magnification: effectiveMagnification }}>
           {children}
         </DockProvider>
       </motion.div>
