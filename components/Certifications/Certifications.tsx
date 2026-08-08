@@ -10,7 +10,7 @@ export default function Certifications() {
       className="flex flex-col md:flex-row w-full min-h-screen bg-black text-white overflow-hidden relative"
     >
       {/* Left Column - Image */}
-      <div className="w-full md:w-1/2 h-full min-h-screen">
+      <div className="w-full md:w-1/2 h-64 md:h-full min-h-[50vh] md:min-h-screen">
         <img 
           src="/images/Certificate.png" 
           alt="Certifications" 
@@ -19,7 +19,7 @@ export default function Certifications() {
       </div>
       
       {/* Right Column - Solid Black Box */}
-      <div className="w-full md:w-1/2 bg-black p-8 md:p-16 flex items-center">
+      <div className="w-full md:w-1/2 bg-black p-6 md:p-16 flex items-center">
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
