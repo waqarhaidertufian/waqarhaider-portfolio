@@ -21,10 +21,10 @@ export default function Hero() {
       <LuxuryBrandLogo />
 
       {/* Contact Us Button - Top Right */}
-      <div className="absolute top-8 right-8 z-50 hidden sm:block">
+      <div className="absolute top-6 right-4 sm:top-8 sm:right-8 z-50">
         <button
           onClick={() => setIsContactModalOpen(true)}
-          className="relative inline-flex items-center justify-center px-7 py-3 text-sm font-semibold tracking-wide text-white transition-all duration-500 rounded-full bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_12px_40px_0_rgba(0,0,0,0.5),inset_0_1px_2px_0_rgba(255,255,255,0.2)] hover:bg-white/[0.07] hover:border-white/[0.25] hover:shadow-[0_12px_50px_0_rgba(255,255,255,0.08),inset_0_1px_3px_0_rgba(255,255,255,0.4)] group overflow-hidden"
+          className="relative inline-flex items-center justify-center px-4 py-2 sm:px-7 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide text-white transition-all duration-500 rounded-full bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_12px_40px_0_rgba(0,0,0,0.5),inset_0_1px_2px_0_rgba(255,255,255,0.2)] hover:bg-white/[0.07] hover:border-white/[0.25] hover:shadow-[0_12px_50px_0_rgba(255,255,255,0.08),inset_0_1px_3px_0_rgba(255,255,255,0.4)] group overflow-hidden"
         >
           {/* Glossy Liquid Fluid Reflection Core */}
           <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/[0.12] to-transparent -translate-x-full group-hover:animate-[shimmer_1.4s_infinite] transition-transform" style={{ animation: 'none' }} />
@@ -32,10 +32,10 @@ export default function Hero() {
           {/* Radial Ambient Fusion Aura */}
           <span className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-full blur-xl opacity-40 group-hover:opacity-100 transition-opacity duration-500 mix-blend-screen" />
 
-          <span className="relative flex items-center gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          <span className="relative flex items-center gap-1.5 sm:gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
             Contact Us
             <svg
-              className="w-4 h-4 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300 text-neutral-300 group-hover:text-white"
+              className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300 text-neutral-300 group-hover:text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
