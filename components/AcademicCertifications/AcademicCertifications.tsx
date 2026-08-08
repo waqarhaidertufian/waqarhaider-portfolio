@@ -9,7 +9,7 @@ export default function AcademicCertifications() {
       className="flex flex-col md:flex-row w-full min-h-screen bg-black text-white overflow-hidden relative"
     >
       {/* Left Column - Solid Black Box */}
-      <div className="w-full md:w-1/2 bg-black p-8 md:p-16 flex items-center">
+      <div className="w-full md:w-1/2 bg-black p-6 md:p-16 flex items-center">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -101,11 +101,11 @@ export default function AcademicCertifications() {
       </div>
       
       {/* Right Column - Image */}
-      <div className="hidden md:block w-full md:w-1/2 h-full min-h-screen">
+      <div className="w-full md:w-1/2 h-64 md:h-full min-h-[50vh] md:min-h-screen">
         <img 
           src="/images/Education.png" 
           alt="Education Background" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center px-4 pb-4 md:px-0 md:pb-0"
         />
       </div>
     </section>
