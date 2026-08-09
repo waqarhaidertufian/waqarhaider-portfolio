@@ -94,7 +94,7 @@ export default function Experience() {
                   AI Engineer Intern
                 </h4>
                 <p className="text-sm text-yellow-400/90 font-medium">
-                  Visibility Bot, Faisalabad | July 2026 – September 2026
+                  Visibility Bots, Faisalabad | July 2026 – September 2026
                 </p>
                 <p className="text-sm text-white/60">
                   Implemented computer vision and deep learning modules under industrial guidance.

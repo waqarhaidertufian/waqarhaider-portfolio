@@ -140,7 +140,7 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-white/40 text-sm"
           >
-            © 2024 Waqar Haider. All rights reserved.
+            © 2026 Waqar Haider. All rights reserved.
           </motion.p>
         </div>
       </div>
