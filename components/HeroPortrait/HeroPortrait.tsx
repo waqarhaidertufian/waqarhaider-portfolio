@@ -6,7 +6,7 @@ export default function HeroPortrait() {
       
       {/* Portrait Image */}
       <img
-        src="/images/hero-portrait.jpeg"
+        src="/hero-portrait.jpeg"
         alt="Hero Portrait"
         className="w-full h-full object-cover object-center max-w-7xl mx-auto px-4 md:px-8"
       />

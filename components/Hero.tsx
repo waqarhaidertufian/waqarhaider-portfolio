@@ -1,12 +1,14 @@
 'use client'
 
 import { useRef, useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { TextEffect } from '@/components/ui/text-effect'
 import { LuxuryBrandLogo } from '@/components/ui/luxury-brand-logo'
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false)
 
   useEffect(() => {
     const video = videoRef.current
@@ -20,10 +22,10 @@ export default function Hero() {
       {/* Luxury Brand Logo */}
       <LuxuryBrandLogo />
 
-      {/* Contact Us Button - Top Right */}
+      {/* Download CV Button - Top Right */}
       <div className="absolute top-6 right-4 sm:top-8 sm:right-8 z-50">
         <button
-          onClick={() => setIsContactModalOpen(true)}
+          onClick={() => setIsCvModalOpen(true)}
           className="relative inline-flex items-center justify-center px-4 py-2 sm:px-7 sm:py-3 text-xs sm:text-sm font-semibold tracking-wide text-white transition-all duration-500 rounded-full bg-white/[0.02] backdrop-blur-2xl border border-white/[0.08] shadow-[0_12px_40px_0_rgba(0,0,0,0.5),inset_0_1px_2px_0_rgba(255,255,255,0.2)] hover:bg-white/[0.07] hover:border-white/[0.25] hover:shadow-[0_12px_50px_0_rgba(255,255,255,0.08),inset_0_1px_3px_0_rgba(255,255,255,0.4)] group overflow-hidden"
         >
           {/* Glossy Liquid Fluid Reflection Core */}
@@ -33,7 +35,7 @@ export default function Hero() {
           <span className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-full blur-xl opacity-40 group-hover:opacity-100 transition-opacity duration-500 mix-blend-screen" />
 
           <span className="relative flex items-center gap-1.5 sm:gap-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-            Contact Us
+            Download CV
             <svg
               className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 group-hover:scale-110 transition-all duration-300 text-neutral-300 group-hover:text-white"
               fill="none"
@@ -41,7 +43,7 @@ export default function Hero() {
               stroke="currentColor"
               strokeWidth="2.5"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
           </span>
         </button>
@@ -74,18 +76,18 @@ export default function Hero() {
         </video>
         
         {/* Premium Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-black/30 to-black/40" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-black/15 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/10" />
       </div>
 
       {/* Left Side Typography - Luxury Design */}
-      <div className="absolute left-4 sm:left-8 md:left-12 lg:left-16 top-1/3 z-30 flex flex-col items-start gap-2 max-w-xl pointer-events-none">
-        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-wider uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+      <div className="absolute left-2 sm:left-6 md:left-10 lg:left-14 top-[20%] sm:top-[22%] md:top-1/4 z-30 flex flex-col items-start gap-2 max-w-xl pointer-events-none">
+        <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-extrabold tracking-wider uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
           WAQAR HAIDER
         </h1>
         <div className="flex items-center gap-2">
           <div className="h-px w-6 sm:w-8 bg-gradient-to-r from-white/60 to-transparent" />
-          <div className="text-xs sm:text-sm md:text-lg font-medium text-zinc-300 tracking-[0.15em] sm:tracking-[0.2em] uppercase">
+          <div className="text-[10px] sm:text-xs md:text-base font-medium text-zinc-300 tracking-[0.15em] sm:tracking-[0.2em] uppercase">
             <TextEffect 
               per="char" 
               delay={0.6}
@@ -118,6 +120,103 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* CV Modal */}
+      <AnimatePresence>
+        {isCvModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          >
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-md"
+              onClick={() => setIsCvModalOpen(false)}
+            />
+
+            {/* Modal Card */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="relative w-full max-w-sm rounded-2xl bg-neutral-950/75 backdrop-blur-2xl border border-white/[0.08] p-6 text-center shadow-[0_25px_70px_-10px_rgba(0,0,0,0.9),inset_0_1px_2px_0_rgba(255,255,255,0.25)] overflow-hidden"
+            >
+              {/* Internal Fluid Reflection Effects */}
+              <div className="absolute -top-12 -right-12 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+              <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-purple-500/10 rounded-full blur-2xl pointer-events-none" />
+
+              {/* Close Button */}
+              <button
+                onClick={() => setIsCvModalOpen(false)}
+                className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors p-1.5 rounded-full hover:bg-white/[0.05]"
+                aria-label="Close modal"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+
+              <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400 mb-6 mt-2">
+                Curriculum Vitae
+              </h3>
+
+              {/* CV Options */}
+              <div className="flex flex-col gap-3">
+                {/* Preview CV */}
+                <a
+                  href="/cv.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all group/item"
+                >
+                  <div className="p-2 rounded-lg bg-white/[0.03] text-neutral-400 group-hover/item:text-white group-hover/item:bg-white/[0.08] transition-all">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="text-sm font-semibold text-neutral-200">Preview CV</p>
+                    <p className="text-[11px] text-neutral-500">Open in new tab</p>
+                  </div>
+                  <svg className="w-4 h-4 text-neutral-500 group-hover/item:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+
+                {/* Download CV */}
+                <a
+                  href="/cv.pdf"
+                  download="Waqar_Haider_CV.pdf"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:bg-white/[0.06] hover:border-white/[0.15] transition-all group/item"
+                >
+                  <div className="p-2 rounded-lg bg-white/[0.03] text-neutral-400 group-hover/item:text-white group-hover/item:bg-white/[0.08] transition-all">
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                  </div>
+                  <div className="flex-1 text-left">
+                    <p className="text-sm font-semibold text-neutral-200">Download CV</p>
+                    <p className="text-[11px] text-neutral-500">Save to device</p>
+                  </div>
+                  <svg className="w-4 h-4 text-neutral-500 group-hover/item:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+              </div>
+
+              <p className="text-[11px] text-neutral-600 mt-4 tracking-wide">Click outside or press backdrop to dismiss.</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Premium Floating Modal */}
       {isContactModalOpen && (

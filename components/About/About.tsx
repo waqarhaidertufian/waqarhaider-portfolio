@@ -107,17 +107,35 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 gap-3 sm:gap-4"
+            className="flex flex-col items-center"
           >
-            {stats.map((stat, index) => (
-              <AnimatedStat 
-                key={stat.label} 
-                value={stat.value} 
-                suffix="+" 
-                label={stat.label} 
-                delay={index * 0.1}
+            {/* Profile Picture */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-8"
+            >
+              <img
+                src="/profile.png"
+                alt="Waqar Haider"
+                className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-zinc-800/80 shadow-2xl shadow-primary/10"
               />
-            ))}
+            </motion.div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
+              {stats.map((stat, index) => (
+                <AnimatedStat 
+                  key={stat.label} 
+                  value={stat.value} 
+                  suffix="+" 
+                  label={stat.label} 
+                  delay={index * 0.1}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

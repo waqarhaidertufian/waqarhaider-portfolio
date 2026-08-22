@@ -14,20 +14,48 @@ export function LuxuryBrandLogo() {
       <Link href="#home" className="block">
         <motion.div
           whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
           className="relative group"
+          style={{ willChange: 'transform' }}
         >
+          {/* Ambient Glow Backdrop */}
+          <motion.div
+            className="absolute inset-0 -m-4 rounded-full blur-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background: 'linear-gradient(135deg, #06b6d4, #8b5cf6, #3b82f6, #10b981)',
+              backgroundSize: '300% 300%',
+              animation: 'gradient-shift 8s ease infinite',
+              willChange: 'opacity, filter'
+            }}
+          />
+          
           {/* Logo Text */}
           <div className="relative flex items-center gap-0.5">
-            <span className="text-3xl font-bold text-white tracking-tight group-hover:text-white transition-colors duration-500">
+            <motion.span 
+              className="font-extrabold text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-cyan-400 via-fuchsia-500 to-indigo-500 animate-shimmer bg-[length:200%_auto] drop-shadow-[0_0_15px_rgba(139,92,246,0.8)] transition-all duration-500"
+              style={{ willChange: 'background-position' }}
+            >
               W
-            </span>
-            <span className="text-3xl font-bold text-sky-400 tracking-tight shadow-[0_0_20px_rgba(56,189,248,0.8)] group-hover:shadow-[0_0_30px_rgba(56,189,248,1)] group-hover:text-sky-300 transition-all duration-500">
+            </motion.span>
+            <motion.span 
+              className="font-extrabold text-2xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-violet-500 via-cyan-400 via-fuchsia-500 to-indigo-500 animate-shimmer bg-[length:200%_auto] drop-shadow-[0_0_15px_rgba(139,92,246,0.8)] transition-all duration-500"
+              style={{ willChange: 'background-position, opacity' }}
+              animate={{ opacity: [1, 0.3, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+            >
               .
-            </span>
+            </motion.span>
           </div>
         </motion.div>
       </Link>
+      
+      {/* CSS Keyframes for Gradient Animation */}
+      <style jsx global>{`
+        @keyframes gradient-shift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+      `}</style>
     </motion.div>
   )
 }

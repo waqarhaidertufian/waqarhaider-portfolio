@@ -47,13 +47,16 @@
 
 @keyframes shimmer {
   0% {
-    transform: translateX(-100%);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    transform: translateX(100%);
+    background-position: 0% 50%;
   }
 }
 
 .animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
+  animation: shimmer 2.5s ease infinite;
 }
